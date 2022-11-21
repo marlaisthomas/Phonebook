@@ -21,6 +21,22 @@ listP.append(["Weckmann", "Claudia", "Dornierstraße", "112", "51381", "Leverkus
 listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg", "040219613"])
 listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0228219613"])
 
+def add():
+    lastName = input("Wie lautet der Nachname des neuen Kontakts? ")
+    firstName = input("Wie lautet der Vorname? ")
+    street = input("In welcher Straße wohnt die Person? ")
+    if street[-3:].lower() == "str":
+        street = street + "aße" 
+    elif street[-4:].lower() == "str.":
+        punkt = street.replace(".", "a")
+    street = punkt + "ße"
+    houseNum = input ("Und die Hausnummer: ")
+    plz = input ("Postleitzahl? ")
+    city = input ("In welcher Stadt lebt die Person? ") 
+    telNum = input("Welche Telefonnummer hat der Kontakt? ")
+    listP.append([lastName + ', ' + firstName, street + ' ' + houseNum, plz + ' ' + city, telNum])    
+
+
 def query():
     print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
     lastName = input("Nachname: ")
