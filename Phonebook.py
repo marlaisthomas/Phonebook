@@ -22,8 +22,7 @@ listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg"
 listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0228219613"])
 
 def query():
-    print(
-        "Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
+    print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
     lastName = input("Nachname: ")
     firstName = input("Vorname: ")
     street = input("Straße: ")
@@ -36,6 +35,7 @@ def query():
     for attr in listP:
         count += 1
         for i in attr:
-            if i != '' and i in [lastName, firstName, street, houseNum, plz, city, telNum]:
+            if i != '' and i.lower() in [lastName.lower(), firstName.lower(), street.lower(), houseNum.lower(), plz.lower(), city.lower(), telNum.lower()]:
                 print(listP[count])
+        #print(treffer)
 
