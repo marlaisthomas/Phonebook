@@ -19,7 +19,7 @@ listP = [["Grünwald", "Heinz", "Gotenstraße", "13", "53111", "Bonn", "02883911
 listP.append(["Amiri", "Nele", "Schubertstraße", "38", "50676", "Köln", "02217632002"])
 listP.append(["Weckmann", "Claudia", "Dornierstraße", "112", "51381", "Leverkusen", "022315717"])
 listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg", "040219613"])
-listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0228219613"])
+listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0221219613"])
 
 def add():
     lastName = input("Wie lautet der Nachname des neuen Kontakts? ")
@@ -52,6 +52,11 @@ def query():
         count += 1
         for i in attr:
             if i != '' and i.lower() in [lastName.lower(), firstName.lower(), street.lower(), houseNum.lower(), plz.lower(), city.lower(), telNum.lower()]:
-                print(listP[count])
-        #print(treffer)
+                treffer.append(listP[count])
+                x = listP[count]
+                print()
+                print(str(x[1]) + ' ' + str(x[0]) + ', ' + str(x[2]) + ' ' + str(x[3])+ '/ ' + str(x[4]) + ' ' + str(x[5]) + ',' + ' Tel. ' +  str(x[6]))
+
+
+                #print(listP[count])
 
