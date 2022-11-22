@@ -37,13 +37,14 @@ def add():
         street = street + "aße"
     elif street[-4:].lower() == "str.":
         punkt = street.replace(".", "a")
-    street = punkt + "ße"
+        street = punkt + "ße"
     houseNum = input ("Und die Hausnummer: ")
     plz = input ("Postleitzahl? ")
     city = input ("In welcher Stadt lebt die Person? ")
     telNum = input("Welche Telefonnummer hat der Kontakt? ")
-    listP.append([lastName + ', ' + firstName, street + ' ' + houseNum, plz + ' ' + city, telNum])
-
+    neu = [lastName + ', ' + firstName + ', ' + street + ', ' + houseNum + ', ' + plz + ', ' + city + ', ' + telNum]
+    listP.append(neu)
+    print("Eintrag wurde dem Telefonbuch hinzugefügt als:/n" + neu)
 
 
 
@@ -94,22 +95,24 @@ def main():
     global y
     y = True
     while y == True:
-        choice = input("""Wählen Sie den passenden Buchstaben für die gewünschte Option:
-    a: Telefonnummer suchen
-    b: Kontakt hinzufügen
-    c: Kontakt entfernen
-    d: Programm beeenden
+        print(" ")
+        print(" ")
+        print("Wählen Sie den passenden Buchstaben für die gewünschte Option:")
+        print("    a: Telefonnummer suchen")
+        print("    b: Kontakt hinzufügen")
+        print("    c: Kontakt entfernen")
+        print("    d: Programm beeenden")
+        print()
+        choice = input("    ")
 
-    """)
-
-    if choice == "a":
-        query()
-    elif choice == "b":
-        add()
-    elif choice == "c":
-        elim()
-    elif choice == "d":
-        exit()
+        if choice == "a":
+            query()
+        elif choice == "b":
+            add()
+        elif choice == "c":
+            elim()
+        elif choice == "d":
+            exit()
 
 
 
