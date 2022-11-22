@@ -11,11 +11,15 @@ class Phonebook:
         self.city = ' '
         self.number = ' '
 
+    def print(self):
+        print(f"{self.name}")
+
 pers1 = Phonebook("Heinz Grünwald", "Gotenstr. 13", "53111 Bonn", "028839116")
 pers2 = Phonebook("Nele Amiri", "Schubertstr. 38", "50676 Köln", "02217632002")
 pers3 = Phonebook("Claudia Weckmann", "Dornierstr. 112", "51381 Leverkusen", "022315717")
 pers4 = Phonebook("Bertolt Heising", "Breslauer Str. 3", "22297 Hamburg", "040219613")
 
+#pers4.print()
 
 global listP
 listP = [["Grünwald", "Heinz", "Gotenstraße", "13", "53111", "Bonn", "028839116"]]
@@ -25,9 +29,12 @@ listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg"
 listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0221219613"])
 listP.append(["Wischnewski", "Robert", "Mozartstraße", "11", "30161", "Hannover", "05717113042"])
 listP.append(["Franziska", "Mahler", "Uhlandstraße", "41", "53315", "Bonn", "0228482993" ])
-listP.append(["Traunstein", "Helge", "Mühlenstraße", "8", "31237" "Hildesheim", "052191736"])
+listP.append(["Traunstein", "Helge", "Mühlenstraße", "8", "31237", "Hildesheim", "052191736"])
 listP.append(["Ucar", "Cem", "Herbertstraße", "24", "36381", "Gießen", "0471116265"])
-listP.append(["Jork", "Maria", "Am Gesundbrunnen", "29", "10443" "Berlin", "030518271"])
+listP.append(["Jork", "Maria", "Am Gesundbrunnen", "29", "10443", "Berlin", "030518271"])
+
+
+
 
 def add():
     lastName = input("Wie lautet der Nachname des neuen Kontakts? ")
@@ -42,9 +49,9 @@ def add():
     plz = input ("Postleitzahl? ")
     city = input ("In welcher Stadt lebt die Person? ")
     telNum = input("Welche Telefonnummer hat der Kontakt? ")
-    neu = [lastName + ', ' + firstName + ', ' + street + ', ' + houseNum + ', ' + plz + ', ' + city + ', ' + telNum]
+    neu = [lastName, firstName, street, houseNum, plz, city, telNum]
     listP.append(neu)
-    print("Eintrag wurde dem Telefonbuch hinzugefügt als:/n" + neu)
+    print("Eintrag wurde dem Telefonbuch hinzugefügt als:\n" + ", ".join(neu))
 
 
 
@@ -66,23 +73,31 @@ def query():
         for i in attr:
             if i != '' and i.lower() in [lastName.lower(), firstName.lower(), street.lower(), houseNum.lower(), plz.lower(), city.lower(), telNum.lower()]:
                 treffer.append(listP[count])
+                global zaehlung
+                zaehlung = []
+                zaehlung.append(count)
+                global x
                 x = listP[count]
-                print()
+                if len(treffer) == 1:
+                    print()
                 print(str(x[1]) + ' ' + str(x[0]) + ', ' + str(x[2]) + ' ' + str(x[3])+ '/ ' + str(x[4]) + ' ' + str(x[5]) + ',' + ' Tel. ' +  str(x[6]))
+                print(' ')
 
 
-                #print(listP[count])
+
 
 
 def elim():
     query()
     answer = input("Möchten Sie die ausgesuchten Einträge löschen? (j/n) ")
     if answer.lower() == "j":
-        listP.remove(treffer)
-    if answer.lower() == "n":
-        treffer.clear()
+        for lauf_v in zaehlung:
+            del listP[lauf_v]
+        print("Einträge wurden erfolgreich entfernt")
+    treffer.clear()
 
-elim()
+
+
 
 def exit():
     y == False
@@ -91,6 +106,22 @@ def exit():
 
 
 def main():
+
+    global listP
+    listP = [["Grünwald", "Heinz", "Gotenstraße", "13", "53111", "Bonn", "028839116"]]
+    listP.append(["Amiri", "Nele", "Schubertstraße", "38", "50676", "Köln", "02217632002"])
+    listP.append(["Weckmann", "Claudia", "Dornierstraße", "112", "51381", "Leverkusen", "022315717"])
+    listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg", "040219613"])
+    listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0221219613"])
+    listP.append(["Wischnewski", "Robert", "Mozartstraße", "11", "30161", "Hannover", "05717113042"])
+    listP.append(["Franziska", "Mahler", "Uhlandstraße", "41", "53315", "Bonn", "0228482993" ])
+    listP.append(["Traunstein", "Helge", "Mühlenstraße", "8", "31237", "Hildesheim", "052191736"])
+    listP.append(["Ucar", "Cem", "Herbertstraße", "24", "36381", "Gießen", "0471116265"])
+    listP.append(["Jork", "Maria", "Am Gesundbrunnen", "29", "10443", "Berlin", "030518271"])
+    directory_file = open("Phonebook1.txt", "w")
+
+
+
 
     global y
     y = True
@@ -118,8 +149,5 @@ def main():
 
 
 
-
-
-
 if __name__ == "__main__":
-        main()
+    main()
