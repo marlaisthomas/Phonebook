@@ -45,15 +45,6 @@ class Phonebook:
         self.tel = input("Welche Telefonnummer hat der Kontakt? ")
 
 
-
-
-#print("test")
-#pers4.print()
-#myNew = Phonebook()
-#myNew.readFromInput()
-#myNew.print()
-
-
 global listP
 listP = [
     Phonebook("Heinz Grünwald", "Gotenstr. 13", "53111 Bonn", "028839116"),
@@ -61,19 +52,6 @@ listP = [
     Phonebook("Claudia Weckmann", "Dornierstr. 112", "51381 Leverkusen", "022315717"),
     Phonebook("Bertolt Heising", "Breslauer Str. 3", "22297 Hamburg", "040219613")
 ]
-
-# listP = [["Grünwald", "Heinz", "Gotenstraße", "13", "53111", "Bonn", "028839116"]]
-# listP.append(["Amiri", "Nele", "Schubertstraße", "38", "50676", "Köln", "02217632002"])
-# listP.append(["Weckmann", "Claudia", "Dornierstraße", "112", "51381", "Leverkusen", "022315717"])
-# listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg", "040219613"])
-# listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0221219613"])
-# listP.append(["Wischnewski", "Robert", "Mozartstraße", "11", "30161", "Hannover", "05717113042"])
-# listP.append(["Franziska", "Mahler", "Uhlandstraße", "41", "53315", "Bonn", "0228482993" ])
-# listP.append(["Traunstein", "Helge", "Mühlenstraße", "8", "31237", "Hildesheim", "052191736"])
-# listP.append(["Ucar", "Cem", "Herbertstraße", "24", "36381", "Gießen", "0471116265"])
-# listP.append(["Jork", "Maria", "Am Gesundbrunnen", "29", "10443", "Berlin", "030518271"])
-
-
 
 
 def add():
@@ -85,19 +63,10 @@ def add():
     neu.print()
 
 
-
 def query():
     global listP
     print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
     search = input("Suche: ")
-    # lastName = input("Nachname: ")
-    # firstName = input("Vorname: ")
-    # street = input("Straße: ")
-    # houseNum = input("Hausnummer: ")
-    # plz = input("Postleitzahl: ")
-    # city = input("Stadt: ")
-    # telNum = input("Telefonnummer: ")
-    # inputs = [lastName.lower(), firstName.lower(), street.lower(), houseNum.lower(), plz.lower(), city.lower(), telNum.lower()]
     treffer = []
     for person in listP:
         for i in person.getAttrList():
@@ -110,9 +79,6 @@ def query():
     return treffer
 
 
-
-
-
 def elim():
     treffer = query()
     answer = input("Möchten Sie die ausgesuchten Einträge löschen? (j/n) ")
@@ -122,33 +88,12 @@ def elim():
         print("Einträge wurden erfolgreich entfernt")
 
 
-
-
 def quit():
     global y
     y = False
 
 
-
-
 def main():
-
-    # global listP
-    # listP = [["Grünwald", "Heinz", "Gotenstraße", "13", "53111", "Bonn", "028839116"]]
-    # listP.append(["Amiri", "Nele", "Schubertstraße", "38", "50676", "Köln", "02217632002"])
-    # listP.append(["Weckmann", "Claudia", "Dornierstraße", "112", "51381", "Leverkusen", "022315717"])
-    # listP.append(["Heising", "Bertolt", "Breslauer Straße", "3", "22297", "Hamburg", "040219613"])
-    # listP.append(["Gause", "Gundula", "Bonner Wall", "47", "50117", "Köln", "0221219613"])
-    # listP.append(["Wischnewski", "Robert", "Mozartstraße", "11", "30161", "Hannover", "05717113042"])
-    # listP.append(["Franziska", "Mahler", "Uhlandstraße", "41", "53315", "Bonn", "0228482993" ])
-    # listP.append(["Traunstein", "Helge", "Mühlenstraße", "8", "31237", "Hildesheim", "052191736"])
-    # listP.append(["Ucar", "Cem", "Herbertstraße", "24", "36381", "Gießen", "0471116265"])
-    # listP.append(["Jork", "Maria", "Am Gesundbrunnen", "29", "10443", "Berlin", "030518271"])
-    # directory_file = open("Phonebook1.txt", "w")
-
-
-
-
     global y
     y = True
     while y == True:
@@ -175,9 +120,6 @@ def main():
             global listP
             for p in listP:
                 p.print()
-
-
-
 
 
 if __name__ == "__main__":
