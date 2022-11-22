@@ -82,7 +82,7 @@ def elim():
     if answer.lower() == "n":
         treffer.clear()
 
-#elim()
+elim()
 
 def exit():
     y == False
