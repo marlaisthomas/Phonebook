@@ -3,7 +3,7 @@ from phonebook import Phonebook
 
 
 def elim(phonebook):
-    print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
+    print("Wen suchen Sie?")
     search = input("Suche: ")
     treffer = phonebook.query(search)
     print(f"Zu löschende Einträge ({len(treffer)}):")
@@ -28,16 +28,19 @@ def main():
         print("    a: Telefonnummer suchen")
         print("    b: Kontakt hinzufügen")
         print("    c: Kontakt entfernen")
-        print("    d: Programm beeenden")
-        print("    e: Bearbeiten")
+        print("    d: Bearbeiten")
+        print("    e: Programm beenden")
         print()
         choice = input("    ")
 
+        elif choice == "0":
+            phonebook.printAll()
+        
         if choice == "a":
-            print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
+            print("Wen suchen Sie?")
             search = input("Suche: ")
             treffer = phonebook.query(search)
-            print(f"Found {len(treffer)} entries:")
+            print(f"Gefundene {len(treffer)} Einträge:")
             for person in treffer:
                 person.print()
 
@@ -51,20 +54,20 @@ def main():
             elim(phonebook)
 
         elif choice == "d":
-            run = False
-
-        elif choice == "0":
-            phonebook.printAll()
-
-        elif choice == "e":
-            print("Geben Sie möglichst viele Informationen über den gesuchten Eintrag ein. Falls Sie die jeweilige Info nicht wissen, drücken Sie Enter: ")
+            print("Wen suchen Sie?")
             search = input("Suche: ")
             treffer = phonebook.query(search)
             for person in treffer:
                 print("-----------------------------------------------")
                 person.print()
                 person.readFromInput()
+        
+        elif choice == "e":
+            run = False
 
+        
 
+        
+        
 if __name__ == "__main__":
     main()
