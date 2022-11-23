@@ -33,10 +33,10 @@ def main():
         print()
         choice = input("    ")
 
-        elif choice == "0":
+        if choice == "0":
             phonebook.printAll()
         
-        if choice == "a":
+        elif choice == "a":
             print("Wen suchen Sie?")
             search = input("Suche: ")
             treffer = phonebook.query(search)
