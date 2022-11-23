@@ -10,7 +10,7 @@ def inputOptional(label, default):
 
 
 class Person:
-    def __init__(self, first_name="", last_name="", tel="", street="", city="", plz="", number=""):
+    def __init__(self, first_name="", last_name="", tel="", street="", number="", plz="", city=""):
         self.first_name = first_name
         self.last_name = last_name
         self.number = number
@@ -53,3 +53,40 @@ class Person:
         self.plz = inputOptional ("Postleitzahl? ", self.plz)
         self.city = inputOptional ("In welcher Stadt lebt die Person? ", self.city)
         self.tel = inputOptional("Welche Telefonnummer hat der Kontakt? ", self.tel)
+
+    def writeToFile(self, textFile):
+        textFile.write(self.first_name + "\n")
+        textFile.write(self.last_name + "\n")
+        textFile.write(self.tel + "\n")
+        textFile.write(self.street + "\n")
+        textFile.write(self.number + "\n")
+        textFile.write(self.plz + "\n")
+        textFile.write(self.city + "\n")
+
+    def readFromFile(textfile):
+        per = Person()
+        try:
+            per.first_name = readLine(textfile)
+            per.last_name = readLine(textfile)
+            per.tel = readLine(textfile)
+            per.street = readLine(textfile)
+            per.number = readLine(textfile)
+            per.plz = readLine(textfile)
+            per.city = readLine(textfile)
+            return per
+        except FileZuEndeException:
+            return None
+
+
+class FileZuEndeException(Exception):
+    def __init__(self, *args: object) -> None:
+        super().__init__(*args)
+
+
+import json
+def readLine(file):
+    line = file.readline()
+    if line == "":
+        raise FileZuEndeException()
+    else:
+        return line.strip().replace("\n", "")

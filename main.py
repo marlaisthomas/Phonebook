@@ -1,5 +1,5 @@
 from person import Person
-from phonebook import Phonebook
+from Phonebook import Phonebook
 
 
 def elim(phonebook):
@@ -18,7 +18,11 @@ def elim(phonebook):
 
 def main():
     phonebook = Phonebook()
-    phonebook.injectTestData()
+    phonebook.readFromFile()
+    #phonebook.injectTestData()
+    #phonebook.writeToFile()
+    #heinz = Person("heinz", "djkfj")
+    #print(heinz.getAttrList())
     run = True
     while run:
         print(" ")
@@ -35,7 +39,7 @@ def main():
 
         if choice == "0":
             phonebook.printAll()
-        
+
         elif choice == "a":
             print("Wen suchen Sie?")
             search = input("Suche: ")
@@ -61,13 +65,12 @@ def main():
                 print("-----------------------------------------------")
                 person.print()
                 person.readFromInput()
-        
+
         elif choice == "e":
             run = False
 
-        
+        phonebook.writeToFile()
 
-        
-        
+
 if __name__ == "__main__":
     main()

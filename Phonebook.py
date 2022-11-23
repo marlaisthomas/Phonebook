@@ -6,11 +6,10 @@ class Phonebook:
         self.persons = []
 
     def injectTestData(self):
-        self.persons.append(Person("Heinz",   "Grünwald", "911", "Gotenstr.",      "Bonn",       "53111", "13" ))
-        self.persons.append(Person("Nele",    "Amiri",    "112", "Schubertstr.",   "Köln",       "50676", "38" ))
-        self.persons.append(Person("Claudia", "Weckmann", "123", "Dornierstr.",    "Leverkusen", "51381", "112"))
-        self.persons.append(Person("Bertolt", "Heising",  "007", "Breslauer Str.", "Hamburg",    "22297", "3"  ))
-
+        self.persons.append(Person("Heinz",   "Grünwald", "911", "Gotenstr.",      "13",  "53111", "Bonn"       ))
+        self.persons.append(Person("Nele",    "Amiri",    "112", "Schubertstr.",   "38",  "50676", "Köln"       ))
+        self.persons.append(Person("Claudia", "Weckmann", "123", "Dornierstr.",    "112", "51381", "Leverkusen" ))
+        self.persons.append(Person("Bertolt", "Heising",  "007", "Breslauer Str.", "3",   "22297", "Hamburg"    ))
 
     def add(self):
         neu = Person()
@@ -32,11 +31,29 @@ class Phonebook:
             self.persons.remove(person)
 
     def printAll(self):
+        print(f"Currently {len(self.persons)} persons loaded:")
         for person in self.persons:
             person.print()
 
-    def writeInFile(self):
-            with open("phonebook.txt" ) as textFile:
-                textFile.write(self.persons)
+    def writeToFile(self):
+        with open("phonebook.txt", 'w+') as textFile:
+            for person in self.persons:
+                person.writeToFile(textFile)
 
-            self.persons
+    def readFromFile(self):
+        self.persons = []
+        with open("phonebook.txt", 'r') as textFile:
+            while True:
+                readPerson = Person.readFromFile(textFile)
+                if not readPerson is None:
+                    self.persons.append(readPerson)
+                else:
+                    break
+
+
+
+
+# phonebook = Phonebook()
+# phonebook.writeToFile()
+
+# #print(type(person))
