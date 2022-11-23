@@ -11,6 +11,7 @@ class Phonebook:
         self.persons.append(Person("Claudia", "Weckmann", "123", "Dornierstr.",    "Leverkusen", "51381", "112"))
         self.persons.append(Person("Bertolt", "Heising",  "007", "Breslauer Str.", "Hamburg",    "22297", "3"  ))
 
+
     def add(self):
         neu = Person()
         neu.readFromInput()
@@ -33,3 +34,9 @@ class Phonebook:
     def printAll(self):
         for person in self.persons:
             person.print()
+
+    def writeInFile(self):
+            with open("phonebook.txt" ) as textFile:
+                textFile.write(self.persons)
+
+            self.persons
