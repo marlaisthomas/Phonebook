@@ -37,22 +37,22 @@ def main():
         print(" ")
         print(" ")
         print("Wählen Sie den passenden Buchstaben für die gewünschte Option:")
-        print("    0: List all")
-        print("    a: Telefonnummer suchen")
-        print("    b: Kontakt hinzufügen")
-        print("    c: Kontakt entfernen")
-        print("    d: Bearbeiten")
-        print("    e: Programm beenden")
-        print()
-        choice = input("    ")
+        print("    a: List all")
+        print("    b: Telefonnummer suchen")
+        print("    c: Kontakt hinzufügen")
+        print("    d: Kontakt entfernen")
+        print("    e: Bearbeiten")
+        print("    f: Programm beenden")
+
+        choice = (input("    ")).lower()
 
         clear()
 
-        if choice == "0":
+        if choice == "a":
             phonebook.printAll()
             input("Press ENTER to continue ...")
 
-        elif choice == "a":
+        elif choice == "b":
             print("Wen suchen Sie?")
             search = input("Suche: ")
             treffer = phonebook.query(search)
@@ -61,18 +61,21 @@ def main():
                 person.print()
             input("Press ENTER to continue ...")
 
-        elif choice == "b":
+        elif choice == "c":
+            #test = input("Möchten Sie erst prüfen, ob der Kontakt schon angelegt ist? (j/n)")
+            #if test.lower() == "j":
+            #    input("press enter")
             newPerson = phonebook.add()
             if newPerson != None:
                 print("Eintrag wurde dem Telefonbuch hinzugefügt als:")
                 newPerson.print()
             input("Press ENTER to continue ...")
 
-        elif choice == "c":
+        elif choice == "d":
             elim(phonebook)
             input("Press ENTER to continue ...")
 
-        elif choice == "d":
+        elif choice == "e":
             print("Wen suchen Sie?")
             search = input("Suche: ")
             treffer = phonebook.query(search)
@@ -82,7 +85,7 @@ def main():
                 person.readFromInput()
             input("Press ENTER to continue ...")
 
-        elif choice == "e":
+        elif choice == "f":
             run = False
 
         phonebook.writeToFile()
